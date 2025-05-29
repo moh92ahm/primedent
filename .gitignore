@@ -1,13 +1,22 @@
-build
-dist / media
-node_modules
-.DS_Store
+# Node & Payload
+node_modules/
 .env
-.next
-.vercel
+dist/
+.next/
+payload.log
 
-# Payload default media upload directory
-public/media/
+# pnpm store
+.pnpm-store/
 
-public/robots.txt
-public/sitemap*.xml
+# Docker
+pgdata/
+uploads/
+
+# Git garbage
+.git/
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
