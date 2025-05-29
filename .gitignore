@@ -1,22 +1,38 @@
-# Node & Payload
+# Node.js
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+
+# pnpm store (local cache)
+.pnpm-store/
+
+# Environment
 .env
+.env.*.local
+
+# Payload
 dist/
-.next/
+uploads/
 payload.log
 
-# pnpm store
-.pnpm-store/
+# Next.js
+.next/
+out/
 
 # Docker
 pgdata/
-uploads/
+*.sqlite
 
-# Git garbage
-.git/
-*.log
+# VS Code & IDEs
+.vscode/
+.idea/
 
 # OS-specific
 .DS_Store
 Thumbs.db
+
+# Git garbage (if accidentally included previously)
+.git/
 
