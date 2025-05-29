@@ -1,31 +1,38 @@
-version: '3'
+version: '3.9'
 
 services:
   payload:
-    image: node:18-alpine
+    image: node:20-alpine
     ports:
-      - '3000:3000'
+      - "3000:3000"
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
-    depends_on:
-      - mongo
+    working_dir: /home/node/app
+    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
     env_file:
       - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
 
-  mongo:
-    image: mongo:latest
+  postgres:
+    image: postgres:15-alpine
+    restart: always
     ports:
-      - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: my_database
+      POSTGRES_USER: my_user
+      POSTGRES_PASSWORD: my_password
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "my_user", "-d", "my_database"]
+      interval: 5s
+      retries: 5
     volumes:
-      - data:/data/db
-    logging:
-      driver: none
+      - pgdata:/var/lib/postgresql/data
 
 volumes:
-  data:
   node_modules:
+  pgdata:
+
