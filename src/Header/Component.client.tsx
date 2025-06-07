@@ -9,6 +9,10 @@ import type { Header } from '@/payload-types'
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
 
+// Shadcn UI
+import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/sheet'
+import { Menu } from 'lucide-react'
+
 interface HeaderClientProps {
   data: Header
 }
@@ -35,7 +39,23 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         <Link href="/">
           <Logo loading="eager" priority="high" className="invert dark:invert-0" />
         </Link>
-        <HeaderNav data={data} />
+        {/* Desktop Nav */}
+        <div className="hidden md:block">
+          <HeaderNav data={data} />
+        </div>
+
+        {/* Mobile Nav */}
+        <div className="md:hidden">
+          <Sheet>
+            <SheetTrigger className="focus:outline-none">
+              <Menu className="w-6 h-6" />
+            </SheetTrigger>
+
+            <SheetContent side="left" className="pt-10 flex flex-col">
+              <HeaderNav data={data} />
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   )
