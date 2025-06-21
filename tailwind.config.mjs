@@ -92,10 +92,20 @@ const config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
+        brand: {
+          dark: '#0b0d0c',
+          background: '#201f40',
+          accent: '#a4906c',
+          primary: '#f2e0ae',
+          light: '#feffde',
+          white: '#faf7f0',
+        },
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        sans: ['Montserrat', 'var(--font-geist-sans)', 'sans-serif'],
+        heading: ['Cormorant Garamond', 'serif'],
+        body: ['Montserrat', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
