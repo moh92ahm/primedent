@@ -310,31 +310,101 @@ export const seed = async ({
     payload.updateGlobal({
       slug: 'footer',
       data: {
-        navItems: [
-          {
-            link: {
-              type: 'custom',
-              label: 'Admin',
-              url: '/admin',
+        cta: {
+          richText: {
+            root: {
+              type: 'root',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      text: 'Ready to get started?',
+                      detail: 0,
+                      format: 0,
+                      mode: 'normal',
+                      style: '',
+                      version: 1,
+                    },
+                  ],
+                  direction: 'ltr',
+                  format: '',
+                  indent: 0,
+                  version: 1,
+                },
+              ],
+              direction: 'ltr',
+              format: '',
+              indent: 0,
+              version: 1,
             },
           },
-          {
-            link: {
-              type: 'custom',
-              label: 'Source Code',
-              newTab: true,
-              url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
+          link: {
+            type: 'custom',
+            appearance: 'default',
+            label: 'Contact Us',
+            url: '/contact',
+          },
+        },
+        logoSection: {
+          text: 'Short text about the company.',
+          socialLinks: [
+            {
+              icon: 'Facebook',
+              link: {
+                type: 'custom',
+                url: 'https://facebook.com',
+                label: 'Facebook',
+              },
             },
+            {
+              icon: 'Twitter',
+              link: {
+                type: 'custom',
+                url: 'https://twitter.com',
+                label: 'Twitter',
+              },
+            },
+          ],
+        },
+        columns: [
+          {
+            label: 'Company',
+            links: [
+              { link: { type: 'custom', label: 'About', url: '/about' } },
+              { link: { type: 'custom', label: 'Blog', url: '/posts' } },
+            ],
           },
           {
-            link: {
-              type: 'custom',
-              label: 'Payload',
-              newTab: true,
-              url: 'https://payloadcms.com/',
-            },
+            label: 'Help',
+            links: [
+              { link: { type: 'custom', label: 'Contact', url: '/contact' } },
+              { link: { type: 'custom', label: 'Support', url: '/support' } },
+            ],
+          },
+          {
+            label: 'More',
+            links: [
+              { link: { type: 'custom', label: 'Admin', url: '/admin' } },
+            ],
           },
         ],
+        bottom: {
+          copyright: '© Payload 2025',
+          legal: {
+            privacyPolicy: {
+              type: 'custom',
+              label: 'Privacy Policy',
+              url: '/privacy',
+            },
+            termsAndConditions: {
+              type: 'custom',
+              label: 'Terms',
+              url: '/terms',
+            },
+          },
+        },
       },
     }),
   ])
