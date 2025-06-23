@@ -9,10 +9,13 @@ import { Logo } from '@/components/Logo/Logo'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 
 export async function Footer() {
-  const footerData: any = await getCachedGlobal('footer', 2)()
+  const [footerData, socialData]: any = await Promise.all([
+    getCachedGlobal('footer', 2)(),
+    getCachedGlobal('social-links', 1)(),
+  ])
 
   const columns = footerData?.columns || []
-  const socialLinks = footerData?.logoSection?.socialLinks || []
+  const socialLinks = socialData?.links || footerData?.logoSection?.socialLinks || []
 
   return (
     <>
