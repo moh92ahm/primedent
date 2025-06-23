@@ -60,8 +60,11 @@ export default buildConfig({
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
   db: postgresAdapter({
+    // Default to a local Postgres instance if DATABASE_URI is not provided
     pool: {
-      connectionString: process.env.DATABASE_URI || '',
+      connectionString:
+        process.env.DATABASE_URI ||
+        'postgresql://postgres:postgres@localhost:5432/payload',
     },
   }),
   collections: [Pages, Posts, Media, Categories, Users],
