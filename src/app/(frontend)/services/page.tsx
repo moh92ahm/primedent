@@ -1,63 +1,27 @@
-import type { Metadata } from 'next/types'
-
-import { CollectionArchive } from '@/components/CollectionArchive'
-import { PageRange } from '@/components/PageRange'
-import { Pagination } from '@/components/Pagination'
-import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+import type { Metadata } from 'next'
 import React from 'react'
-import PageClient from './page.client'
 
-export const dynamic = 'force-static'
-export const revalidate = 600
-
-export default async function Page() {
-  const payload = await getPayload({ config: configPromise })
-
-  const posts = await payload.find({
-    collection: 'services',
-    depth: 1,
-    limit: 12,
-    overrideAccess: false,
-    select: {
-      title: true,
-      slug: true,
-      categories: true,
-      meta: true,
-    },
-  })
-
-  return (
-    <div className="pt-24 pb-24">
-      <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Services</h1>
-        </div>
-      </div>
-
-      <div className="container mb-8">
-        <PageRange
-          collection="services"
-          currentPage={posts.page}
-          limit={12}
-          totalDocs={posts.totalDocs}
-        />
-      </div>
-
-      <CollectionArchive posts={posts.docs} />
-
-      <div className="container">
-        {posts.totalPages > 1 && posts.page && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
-        )}
-      </div>
-    </div>
-  )
+export const metadata: Metadata = {
+  title: 'Services | Primedent',
 }
 
-export function generateMetadata(): Metadata {
-  return {
-    title: `Payload Website Template Services`,
-  }
+export default function ServicesPage() {
+  const services = [
+    { title: 'Service One', slug: 'service-one' },
+    { title: 'Service Two', slug: 'service-two' },
+    { title: 'Service Three', slug: 'service-three' },
+  ]
+
+  return (
+    <main className="container py-24">
+      <h1 className="text-3xl font-bold mb-8">Services</h1>
+      <ul className="space-y-2">
+        {services.map((service) => (
+          <li key={service.slug} className="underline">
+            <a href={`/services/${service.slug}`}>{service.title}</a>
+          </li>
+        ))}
+      </ul>
+    </main>
+  )
 }
