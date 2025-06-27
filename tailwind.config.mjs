@@ -117,12 +117,15 @@ const config = {
           to: { height: '0' },
         },
       },
-      typography: () => ({
+      typography: (theme) => ({
         DEFAULT: {
           css: [
             {
               '--tw-prose-body': 'var(--text)',
               '--tw-prose-headings': 'var(--text)',
+              'h1, h2, h3, h4, h5, h6': {
+                fontFamily: theme('fontFamily.heading').join(', '),
+              },
               h1: {
                 fontWeight: 'bold',
                 marginBottom: '0.25em',
@@ -141,7 +144,6 @@ const config = {
                 fontSize: '1.25rem',
                 fontWeight: 700,
               },
-              
             },
           ],
         },
