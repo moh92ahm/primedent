@@ -1,29 +1,34 @@
-import { getCachedGlobal } from '@/utilities/getGlobals'
-import { getFooterServices } from '@/utilities/getServices'
-import Link from 'next/link'
 import React from 'react'
 
-import { FaInstagram } from 'react-icons/fa'
-import { FaFacebookF } from 'react-icons/fa'
-import { FaYoutube } from 'react-icons/fa'
+import { FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa'
 
-import type { Footer } from '@/payload-types'
+import type { Footer as FooterType } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
 
 export async function Footer() {
-  const footerData: Footer = await getCachedGlobal('footer', 1)()
-  const services = await getFooterServices(5)
+  const footerData: FooterType = {
+    navItems: [
+      { link: { url: '/', label: 'Home', type: 'custom' } },
+      { link: { url: '/about-us', label: 'About Us', type: 'custom' } },
+      { link: { url: '/dr-serhat', label: 'Dr. Serhat', type: 'custom' } },
+      { link: { url: '/services', label: 'Services', type: 'custom' } },
+      { link: { url: '/contact-us', label: 'Contact Us', type: 'custom' } },
+    ],
+  } as FooterType
+
+  const services = [
+    'Hollywood Smile',
+    'All-on-4/6',
+    'Dental Implant',
+    'Zirconium Crown',
+  ]
 
   const navItems = footerData?.navItems || []
 
   return (
     <footer className="relative overflow-hidden font-body text-white bg-gradient-to-t from-brand-dark to-transparent">
-      {/* Background image (optional) */}
-      {/* <div className="absolute inset-0 bg-cover bg-no-repeat bg-center" style={{ backgroundImage: "url('')", zIndex: 0 }}></div> */}
-
-      {/* Call to Action Section */}
       <div className="bg-brand-primary text-brand-dark py-10 px-6 md:px-20 mx-4 md:mx-12 lg:mx-26 2xl:mx-52 relative z-10">
         <div className=" max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left md:max-w-md max-w-sm">
@@ -38,13 +43,10 @@ export async function Footer() {
         </div>
       </div>
 
-      {/* Footer Main Section */}
       <div className="py-12 px-6 md:px-20 relative z-10">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Logo Section */}
           <div>
             <div className="mb-4">
-              {/* Replace with actual logo image or SVG */}
               <Logo className="h-auto mb-2" />
             </div>
             <p className="text-sm text-gray-300 mb-4">
@@ -79,7 +81,6 @@ export async function Footer() {
             </div>
           </div>
 
-          {/* Links Column */}
           <div>
             <h3 className="font-bold mb-3 font-heading">Our Pages</h3>
             <nav className="flex flex-col space-y-2 text-sm text-brand-white hover:text-brand-primary">
@@ -89,19 +90,15 @@ export async function Footer() {
             </nav>
           </div>
 
-          {/* Services Column */}
           <div>
             <h3 className="font-bold mb-3 font-heading">Services</h3>
             <ul className="space-y-2 text-sm text-brand-white">
-              {services.map((service) => (
-                <li key={service.id}>
-                  <Link href={`/services/${service.slug}`}>{service.title}</Link>
-                </li>
+              {services.map((title, idx) => (
+                <li key={idx}>{title}</li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Us Column */}
           <div>
             <h3 className="font-bold mb-3 font-heading ">Contact Us </h3>
             <ul className="space-y-2 text-sm text">
@@ -125,7 +122,6 @@ export async function Footer() {
         </div>
       </div>
 
-      {/* Footer Bottom */}
       <div className="border-t border-brand-primary text-sm py-4 px-6 md:px-20 relative z-10">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400">
@@ -142,9 +138,6 @@ export async function Footer() {
           </div>
         </div>
       </div>
-
-      {/* Optional Decorative Lines */}
-      {/* Use absolutely positioned divs or SVGs for lines if needed */}
     </footer>
   )
 }
