@@ -46,11 +46,11 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText,
         </div>
       </div>
 
-      {form && typeof form === 'object' && (
-        <div className="py-8 bg-brand-dark">
-          <FormBlock form={form} enableIntro={false} />
-        </div>
-      )}
+      {/* Bottom Section Placeholder (e.g., for 20vh contact form) */}
+      <div className="h-[30vh] flex items-center justify-center mx-4 md:mx-12 lg:mx-26 xl:mx-32 2xl:mx-52 bg-brand-dark">
+        {/* Replace this with your contact form */}
+        <p className="text-lg text-brand-light">[ Contact form goes here... ]</p>
+      </div>
     </div>
   )
 }
