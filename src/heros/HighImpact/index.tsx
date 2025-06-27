@@ -7,8 +7,9 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { FormBlock } from '@/blocks/Form/Component'
 
-export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText, form }) => {
   const { setHeaderTheme } = useHeaderTheme()
 
   useEffect(() => {
@@ -45,11 +46,11 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
         </div>
       </div>
 
-      {/* Bottom Section Placeholder (e.g., for 20vh contact form) */}
-      <div className="h-[30vh] max-w-screen-xl mx-auto flex items-center justify-center bg-brand-dark">
-        {/* Replace this with your contact form */}
-        <p className="text-lg text-brand-light">[ Contact form goes here... ]</p>
-      </div>
+      {form && typeof form === 'object' && (
+        <div className="py-8 bg-brand-dark">
+          <FormBlock form={form} enableIntro={false} />
+        </div>
+      )}
     </div>
   )
 }

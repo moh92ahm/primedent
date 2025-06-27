@@ -193,8 +193,9 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: (number | null) | Media;
-  };
+      media?: (number | null) | Media;
+      form?: (number | null) | Form;
+    };
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
   meta?: {
     title?: string | null;
@@ -1061,9 +1062,10 @@ export interface PagesSelect<T extends boolean = true> {
                     label?: T;
                     appearance?: T;
                   };
-              id?: T;
-            };
+            id?: T;
+          };
         media?: T;
+        form?: T;
       };
   layout?:
     | T
