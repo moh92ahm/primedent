@@ -5,6 +5,7 @@ import { FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa'
 import type { Footer as FooterType } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
+import Link from 'next/link'
 import { Logo } from '@/components/Logo/Logo'
 
 export async function Footer() {
@@ -37,9 +38,12 @@ export async function Footer() {
               Get in touch — our <br /> coordinators speak your language.
             </h2>
           </div>
-          <button className="bg-brand-dark text-white px-6 py-3 flex items-center gap-2 mt-4 md:mt-0 hover:bg-gray-800 transition">
+          <Link
+            href="/contact"
+            className="bg-brand-dark text-white px-6 py-3 flex items-center gap-2 mt-4 md:mt-0 hover:bg-gray-800 transition"
+          >
             Get Free Consultation <span>→</span>
-          </button>
+          </Link>
         </div>
       </div>
 
