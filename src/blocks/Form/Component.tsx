@@ -31,6 +31,14 @@ export const FormBlock: React.FC<
     introContent,
   } = props
 
+  // Log the form data for debugging
+  React.useEffect(() => {
+    console.log('FormBlock received formFromProps:', formFromProps)
+    if (!formFromProps || !formFromProps.fields || formFromProps.fields.length === 0) {
+      console.warn('FormBlock: No fields found in formFromProps!')
+    }
+  }, [formFromProps])
+
   const formMethods = useForm({
     defaultValues: formFromProps.fields,
   })

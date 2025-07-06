@@ -194,7 +194,7 @@ export interface Page {
         }[]
       | null;
     media?: (number | null) | Media;
-    form?: (number | null) | Form;
+    cta?: SimpleCTABlock[] | null;
   };
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
   meta?: {
@@ -389,6 +389,52 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SimpleCTABlock".
+ */
+export interface SimpleCTABlock {
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  actionType?: ('link' | 'media' | 'form') | null;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
+  media?: (number | null) | Media;
+  form?: (number | null) | Form;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'simpleCTA';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1065,7 +1111,11 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
-        form?: T;
+        cta?:
+          | T
+          | {
+              simpleCTA?: T | SimpleCTABlockSelect<T>;
+            };
       };
   layout?:
     | T
@@ -1089,6 +1139,28 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SimpleCTABlock_select".
+ */
+export interface SimpleCTABlockSelect<T extends boolean = true> {
+  richText?: T;
+  actionType?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+      };
+  media?: T;
+  form?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

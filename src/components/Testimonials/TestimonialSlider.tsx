@@ -1,13 +1,16 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
+
+import { Quote, Star } from 'lucide-react';
+
 
 interface Testimonial {
   name: string
   role: string
   quote: string
-  image: string
+  star: number
 }
 
 interface TestimonialSliderProps {
@@ -30,10 +33,11 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials }) =
   }, [length])
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-6 text-center">
+    <div className="w-full max-w-3xl mx-auto p-6 text-start">
       {testimonials[current] && (
         <>
-          <div className="mb-4">
+        <Quote className="w-8 h-8 text-brand-primary mb-4" />
+          {/* <div className="mb-4">
             <Image
               src={testimonials[current].image}
               alt={testimonials[current].name}
@@ -41,10 +45,16 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials }) =
               height={80}
               className="rounded-full mx-auto object-cover"
             />
-          </div>
+          </div> */}
           <blockquote className="text-lg italic text-brand-white">“{testimonials[current].quote}”</blockquote>
-          <p className="mt-4 font-semibold text-brand-white">{testimonials[current].name}</p>
-          <p className="text-sm text-white-500">{testimonials[current].role}</p>
+          <p className="mt-4 font-bold font-heading text-2xl text-brand-primary">{testimonials[current].name}</p>
+          <p className="text-md text-brand-white">{testimonials[current].role}</p>
+          
+          <div className="flex items-center mt-2">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className={`w-4 h-4 ${i < 5 ? 'fill-yellow-500' : 'fill-white-400'}`} />
+            ))}
+          </div>
         </>
       )}
       <div className="mt-6 flex justify-center gap-2">

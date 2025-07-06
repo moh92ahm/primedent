@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/fields/linkGroup'
+import { SimpleCTA } from '@/blocks/SimpleCTA/config'
 
 export const hero: Field = {
   name: 'hero',
@@ -68,12 +69,12 @@ export const hero: Field = {
       required: true,
     },
     {
-      name: 'form',
-      type: 'relationship',
-      relationTo: 'forms',
+      name: 'cta',
+      type: 'blocks',
+      blocks: [SimpleCTA],
+      maxRows: 1,
       admin: {
-        condition: (_, { type } = {}) => ['highImpact'].includes(type),
-      },
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),}
     },
   ],
   label: false,
