@@ -14,6 +14,11 @@ import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 export async function generateStaticParams() {
+  // Skip connecting to the database when no connection string is provided.
+  if (!process.env.DATABASE_URI) {
+    return []
+  }
+
   const payload = await getPayload({ config: configPromise })
   const pages = await payload.find({
     collection: 'pages',
