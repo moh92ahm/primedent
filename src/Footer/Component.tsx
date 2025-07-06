@@ -129,10 +129,10 @@ export async function Footer() {
             Reserved.
           </p>
           <div className="flex space-x-4 mt-2 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white">
+            <a href="#" className="text-brand-white hover:text-gray-400">
               Terms & Conditions
             </a>
-            <a href="#" className="text-gray-400 hover:text-white">
+            <a href="#" className="text-brand-white hover:text-gray-400">
               Privacy policy
             </a>
           </div>
