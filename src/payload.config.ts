@@ -74,7 +74,9 @@ export default buildConfig({
     ...plugins,
     // storage-adapter-placeholder
   ],
-  secret: process.env.PAYLOAD_SECRET,
+  // Provide a fallback secret so static builds don't fail when the env
+  // variable is missing. This should be overridden in production.
+  secret: process.env.PAYLOAD_SECRET || 'development-secret',
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
