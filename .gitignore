@@ -1,10 +1,5 @@
 build
-<<<<<<< HEAD
 dist / media
-=======
-dist
-/media
->>>>>>> e48039beb0c357ef26ab4589d85a35f28929b1b9
 node_modules
 .DS_Store
 .next
