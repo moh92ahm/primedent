@@ -19,7 +19,7 @@ const collections: CollectionSlug[] = [
   'form-submissions',
   'search',
 ]
-const globals: GlobalSlug[] = ['header', 'footer', 'social-links']
+const globals: GlobalSlug[] = ['header', 'footer']
 
 // Next.js revalidation errors are normal when seeding the database without a server running
 // i.e. running `yarn seed` locally instead of using the admin UI within an active app
@@ -41,18 +41,23 @@ export const seed = async ({
   payload.logger.info(`— Clearing collections and globals...`)
 
   // clear the database
-  await Promise.all(
-    globals.map((global) =>
-      payload.updateGlobal({
-        slug: global,
-        data: global === 'header' ? { navItems: [] } : {},
-        depth: 0,
-        context: {
-          disableRevalidate: true,
-        },
-      }),
-    ),
-  )
+  await payload.updateGlobal({
+    slug: 'header',
+    data: { navItems: [] },
+    depth: 0,
+    context: {
+      disableRevalidate: true,
+    },
+  })
+
+  await payload.updateGlobal({
+    slug: 'footer',
+    data: { navItems: [] },
+    depth: 0,
+    context: {
+      disableRevalidate: true,
+    },
+  })
 
   await Promise.all(
     collections.map((collection) => payload.db.deleteMany({ collection, req, where: {} })),
@@ -306,128 +311,9 @@ export const seed = async ({
       },
     }),
     payload.updateGlobal({
-      slug: 'social-links',
-      data: {
-        links: [
-          {
-            name: 'Facebook',
-            icon: 'Facebook',
-            link: {
-              type: 'custom',
-              url: 'https://facebook.com',
-              label: 'Facebook',
-            },
-          },
-          {
-            name: 'Twitter',
-            icon: 'Twitter',
-            link: {
-              type: 'custom',
-              url: 'https://twitter.com',
-              label: 'Twitter',
-            },
-          },
-        ],
-      },
-    }),
-    payload.updateGlobal({
       slug: 'footer',
       data: {
-        cta: {
-          richText: {
-            root: {
-              type: 'root',
-              children: [
-                {
-                  type: 'paragraph',
-                  children: [
-                    {
-                      type: 'text',
-                      text: 'Ready to get started?',
-                      detail: 0,
-                      format: 0,
-                      mode: 'normal',
-                      style: '',
-                      version: 1,
-                    },
-                  ],
-                  direction: 'ltr',
-                  format: '',
-                  indent: 0,
-                  version: 1,
-                },
-              ],
-              direction: 'ltr',
-              format: '',
-              indent: 0,
-              version: 1,
-            },
-          },
-          link: {
-            type: 'custom',
-            appearance: 'default',
-            label: 'Contact Us',
-            url: '/contact',
-          },
-        },
-        logoSection: {
-          text: 'Short text about the company.',
-          socialLinks: [
-            {
-              icon: 'Facebook',
-              link: {
-                type: 'custom',
-                url: 'https://facebook.com',
-                label: 'Facebook',
-              },
-            },
-            {
-              icon: 'Twitter',
-              link: {
-                type: 'custom',
-                url: 'https://twitter.com',
-                label: 'Twitter',
-              },
-            },
-          ],
-        },
-        columns: [
-          {
-            label: 'Company',
-            links: [
-              { link: { type: 'custom', label: 'About', url: '/about' } },
-              { link: { type: 'custom', label: 'Blog', url: '/posts' } },
-            ],
-          },
-          {
-            label: 'Help',
-            links: [
-              { link: { type: 'custom', label: 'Contact', url: '/contact' } },
-              { link: { type: 'custom', label: 'Support', url: '/support' } },
-            ],
-          },
-          {
-            label: 'More',
-            links: [
-              { link: { type: 'custom', label: 'Admin', url: '/admin' } },
-            ],
-          },
-        ],
-        bottom: {
-          copyright: '© Payload 2025',
-          legal: {
-            privacyPolicy: {
-              type: 'custom',
-              label: 'Privacy Policy',
-              url: '/privacy',
-            },
-            termsAndConditions: {
-              type: 'custom',
-              label: 'Terms',
-              url: '/terms',
-            },
-          },
-        },
+        navItems: [],
       },
     }),
   ])
