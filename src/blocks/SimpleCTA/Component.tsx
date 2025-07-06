@@ -6,6 +6,7 @@ import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import { FormBlock } from '@/blocks/Form/Component'
+import ContactForm from '@/components/ContactForm'
 
 export const SimpleCTABlock: React.FC<SimpleCTABlockProps> = (props) => {
   const { actionType, richText, link, media, form } = props
@@ -18,12 +19,11 @@ export const SimpleCTABlock: React.FC<SimpleCTABlockProps> = (props) => {
             <RichText data={richText} enableGutter={false} />
           </div>
         )}
-        <div className="flex-1 flex justify-center md:justify-end w-full">
-          {actionType === 'link' && link && <CMSLink {...link} />}
-          {actionType === 'media' && media && <Media resource={media} />}
-          {actionType === 'form' && form && (
-            <FormBlock enableIntro={false} form={form as any} />
-          )}
+        <div>
+          {/* Other sections */}
+          <section className="py-10">
+            <ContactForm />
+          </section>
         </div>
       </div>
     </section>
