@@ -1,29 +1,20 @@
 import type { Metadata } from 'next'
 import React from 'react'
 
-import type { Page as PageType } from '@/payload-types'
-import { RenderHero } from '@/heros/RenderHero'
-import { getCachedDocument } from '@/utilities/getDocument'
-
 export const metadata: Metadata = {
   title: 'Contact Us | Primedent',
 }
 
-// Extend PageType to include breadcrumbs from Nested Docs plugin
-interface Breadcrumb {
-  label: string
-  url?: string
-}
+export default function ContactUsPage() {
 
-type PageWithBreadcrumbs = PageType & { breadcrumbs?: Breadcrumb[] }
-
-export default async function ContactUsPage() {
-  const page = (await getCachedDocument('pages', 'contact-us')()) as PageWithBreadcrumbs | null
   return (
     <div className="relative text-brand-white overflow-hidden min-h-screen">
       {/* Hero Section */}
-      <RenderHero {...page?.hero} type={page?.hero?.type ?? 'none'} pageTitle={page?.title} />
-
+      <div className="container my-20 text-center mx-auto">
+        <div className="max-w-[48rem] mx-auto">
+          <h1 className="text-6xl font-bold mb-4 font-heading">Contact Us</h1>
+        </div>
+      </div>
       {/* Contact Form + Info */}
       <div className="max-w-screen-xl mx-auto mt-20 px-6 md:flex md:gap-20 md:items-start mb-10">
         {/* Contact Form */}

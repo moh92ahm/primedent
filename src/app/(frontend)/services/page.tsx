@@ -3,15 +3,12 @@ import React from 'react'
 
 import Image from 'next/image'
 
-import type { Page as PageType } from '@/payload-types'
-import { getCachedDocument } from '@/utilities/getDocument'
-
 export const metadata: Metadata = {
   title: 'Services | Primedent',
 }
 
-export default async function ServicesPage() {
-  const _page = (await getCachedDocument('pages', 'services')()) as PageType | null
+export default function ServicesPage() {
+
   const services = [
     {
       title: 'Dental Implants',

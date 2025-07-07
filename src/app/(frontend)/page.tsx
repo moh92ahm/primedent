@@ -7,32 +7,71 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import BeforeAfterSlider from '@/components/BeforeAfter'
-// import RotatingImageStrip from '@/components/Testimonials/RotatingImageStrip'
 import TestimonialSlider from '@/components/Testimonials/TestimonialSlider'
 
-// import RecentBlogSection from '@/components/RecentBlogs'
+import ContactForm from '@/components/ContactForm'
 
-import type { Page as PageType } from '@/payload-types'
-import { RenderHero } from '@/heros/RenderHero'
-import { getCachedDocument } from '@/utilities/getDocument'
 
 export const metadata: Metadata = {
   title: 'Home | Primedent',
 }
 
-export default async function Page() {
-  const page = (await getCachedDocument('pages', 'home')()) as PageType | null
-  // const images = [
-  //   '/#.jpg'
-  // ]
-
+export default function Page() {
   return (
     <div className="relative text-brand-white overflow-hidden">
-      <RenderHero
-        {...page?.hero}
-        type={page?.hero?.type ?? "none"}
-        pageTitle={page?.title}
-      />
+        <div className="text-brand-white min-h-screen flex flex-col">
+
+          {/* Hero Section (75%) */}
+          <section className="flex-1 basis-2/4 flex flex-col justify-center">
+            <div className="flex flex-col md:flex-row max-w-screen-xl mx-auto w-full h-full px-6 gap-8 items-center">
+              {/* Left: RichText & CTA */}
+              <div className="flex-1 text-center md:text-left md:max-w-md z-10 flex flex-col justify-center items-center md:items-start">
+                  <h1 className="text-6xl font-bold font-heading text-brand-primary mb-4">
+                    Perfect Smiles Prime Dent Clinics.
+                  </h1>
+                  <p className="text-lg text-brand-white mb-4">
+                    With a focus on holistic well-being, we aim to provide personalized care that improves your smile.
+                  </p>
+                  <Link href="/services" className="bg-brand-primary text-brand-dark font-heading font-bold text-lg py-2 px-6 rounded hover:bg-brand-accent transition">
+                    Get Free Consultation
+                  </Link>
+              </div>
+
+              {/* Right: Hero Image */}
+              <div className="flex-1 flex justify-end items-end">
+                <Image
+                  src="/hero-doctor-image.png"
+                  alt="hero"
+                  width={400}
+                  height={600}
+                  className="object-contain w-full max-h-[70vh]"
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* Second Section */}
+          <section className="bg-brand-dark text-white py-16">
+            <div className="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row gap-12 items-center">
+              {/* CTA Text */}
+              <div className="flex-1">
+                <p className="text-lg text-brand-white mb-4">
+                  # Get In Touch
+                </p>
+                <h1 className="text-4xl font-heading font-bold text-brand-primary mb-4">
+                  Stay Connected <br />for Better Dental Health.
+                </h1>
+              </div>
+
+              {/* Contact Form */}
+              <div className="flex-1 w-full">
+                <ContactForm />
+              </div>
+            </div>
+          </section>
+
+        </div>
+
 
       {/* Services Section */}
       <div className="max-w-screen-xl mx-auto px-6 text-center my-24">
