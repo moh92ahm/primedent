@@ -307,16 +307,19 @@ export default buildConfig({
 
 There is also a simplified [one click deploy](https://github.com/payloadcms/payload/tree/templates/with-vercel-postgres) to Vercel should you need it.
 
-<<<<<<< HEAD
-=======
+When deploying to Vercel, `.env` files committed to your repo are **not** used.
+Open your Vercel project settings and add each variable from `.env.example` as an
+environment variable. Most importantly set `DATABASE_URI` to the connection
+string for your hosted PostgreSQL database (for example from Supabase or Vercel
+Postgres). After redeploying, run `pnpm payload migrate` on the server to create
+the required tables.
+
 #### Static deployments
 
 If you only need a static front-end, add `output: 'export'` to your
 `next.config.js` and create a minimal `vercel.json` pointing Vercel at the
 `dist` directory. Running `npm run build` will then generate the fully static
 site that can be deployed without any server functions.
-
->>>>>>> e48039beb0c357ef26ab4589d85a35f28929b1b9
 ### Self-hosting
 
 Before deploying your app, you need to:
