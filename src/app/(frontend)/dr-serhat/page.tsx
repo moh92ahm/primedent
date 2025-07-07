@@ -2,20 +2,20 @@ import type { Metadata } from 'next'
 import React from 'react'
 import Image from 'next/image'
 
-import type { Page as PageType } from '@/payload-types'
-import { RenderHero } from '@/heros/RenderHero'
-import { getCachedDocument } from '@/utilities/getDocument'
-
 export const metadata: Metadata = {
   title: 'Dr. Serhat | Primedent',
 }
 
-export default async function DrSerhatPage() {
-  const page = (await getCachedDocument('pages', 'dr-serhat')()) as PageType | null
+export default function DrSerhatPage() {
+
   return (
     <div className="relative text-brand-white overflow-hidden min-h-screen">
-      <RenderHero {...page?.hero} type={page?.hero?.type ?? "none"} pageTitle={page?.title} />
-
+      {/* Hero Section */}
+      <div className="container my-20 text-center mx-auto">
+        <div className="max-w-[48rem] mx-auto">
+          <h1 className="text-6xl font-bold mb-4 font-heading">Dr. Serhat</h1>
+        </div>
+      </div>
       {/* Doctor Profile */}
       <div className="max-w-screen-xl mx-auto px-6 md:flex md:gap-10 md:items-start mb-16 mt-20">
         {/* Doctor Image */}
