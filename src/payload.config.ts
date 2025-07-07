@@ -18,6 +18,8 @@ import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import { Services } from './collections/Services'
 
+import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -60,7 +62,7 @@ export default buildConfig({
   },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
-  db: postgresAdapter({
+  db: vercelPostgresAdapter({
     // Default to a local Postgres instance if DATABASE_URI is not provided
     pool: {
       connectionString:
