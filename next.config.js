@@ -24,6 +24,7 @@ const nextConfig = {
   reactStrictMode: true,
   redirects,
   // Enable static export to generate a fully static site
+  // output: 'export',
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
