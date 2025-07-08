@@ -213,15 +213,15 @@ If your database is pointed to production you will want to set `push: false` oth
 Locally create a migration
 
 ```bash
-pnpm payload migrate:create
+npm payload migrate:create
 ```
 
 This creates the migration files you will need to push alongside with your new configuration.
 
-On the server after building and before running `pnpm start` you will want to run your migrations
+On the server after building and before running `npm start` you will want to run your migrations
 
 ```bash
-pnpm payload migrate
+npm payload migrate
 ```
 
 This command will check for any migrations that have not yet been run and try to run them and it will keep a record of migrations that have been run in the database.
@@ -252,8 +252,8 @@ The seed script will also create a demo user for demonstration purposes only:
 
 To run Payload in production, you need to build and start the Admin panel. To do so, follow these steps:
 
-1. Invoke the `next build` script by running `pnpm build` or `npm run build` in your project root. This creates a `.next` directory with a production-ready admin bundle.
-1. Finally run `pnpm start` or `npm run start` to run Node in production and serve Payload from the `.build` directory.
+1. Invoke the `next build` script by running `npm build` or `npm run build` in your project root. This creates a `.next` directory with a production-ready admin bundle.
+1. Finally run `npm start` or `npm run start` to run Node in production and serve Payload from the `.build` directory.
 1. When you're ready to go live, see Deployment below for more details.
 
 ### Deploying to Payload Cloud
@@ -265,7 +265,7 @@ The easiest way to deploy your project is to use [Payload Cloud](https://payload
 This template can also be deployed to Vercel for free. You can get started by choosing the Vercel DB adapter during the setup of the template or by manually installing and configuring it:
 
 ```bash
-pnpm add @payloadcms/db-vercel-postgres
+npm add @payloadcms/db-vercel-postgres
 ```
 
 ```ts
@@ -285,7 +285,7 @@ export default buildConfig({
 We also support Vercel's blob storage:
 
 ```bash
-pnpm add @payloadcms/storage-vercel-blob
+npm add @payloadcms/storage-vercel-blob
 ```
 
 ```ts
@@ -311,7 +311,7 @@ When deploying to Vercel, `.env` files committed to your repo are **not** used.
 Open your Vercel project settings and add each variable from `.env.example` as an
 environment variable. Most importantly set `DATABASE_URI` to the connection
 string for your hosted PostgreSQL database (for example from Supabase or Vercel
-Postgres). After redeploying, run `pnpm payload migrate` on the server to create
+Postgres). After redeploying, run `npm payload migrate` on the server to create
 the required tables.
 
 #### Static deployments
