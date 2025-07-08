@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 
-export const dynamic = 'force-static'
 import React from 'react'
 
 // import Image from 'next/image'

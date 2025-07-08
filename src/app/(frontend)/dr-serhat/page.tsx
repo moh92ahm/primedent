@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import React from 'react'
 import Image from 'next/image'
 
-export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
   title: 'Dr. Serhat | Primedent',
