@@ -37,8 +37,8 @@ export default function AboutUsPage() {
       </div>
 
       {/* Our Vision & Values Section */}
-      <div className="max-w-screen-xl mx-auto px-6 md:flex md:items-center md:gap-10 mb-24">
-        <div className="md:w-1/2 w-full mb-10 md:mb-0">
+      <div className="max-w-screen-xl mx-auto px-6 flex flex-col-reverse md:flex-row md:items-center md:gap-10 md:mb-24">
+        <div className="md:w-1/2 w-full md:mb-0">
           <Image src="/about-us-our-mission-and-values.jpg" alt="" width={400} height={400} className=" w-full object-contain h-[800px]" priority />
         </div>
         <div className="md:w-1/2 w-full">
@@ -87,12 +87,12 @@ export default function AboutUsPage() {
       />
 
       {/* Call to Action Section */}
-      <div className= "flex justify-between max-w-screen-xl mx-auto bg-black text-left py-10 px-6 md:px-20">
-        <div className=" items-start">
+      <div className= "flex flex-col md:flex-row max-w-screen-xl justify-between text-center mx-auto bg-black md:text-left py-10 px-6 md:px-20">
+        <div className="flex flex-col justify-center">
           <p className=" text-lg text-brand-white mb-1"># Not Sure Where To Start?</p>
           <h2 className="max-w-xl text-3xl font-bold text-brand-primary font-heading mb-4">Let us help you with a personalized dental plan and quote.</h2>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center justify-center">
           <Link className="inline-block bg-brand-primary text-brand-dark py-3 px-6 font-bold font-heading text-lg " href="/contact-us">
             Get Free Consultation
           </Link>
@@ -114,13 +114,13 @@ export default function AboutUsPage() {
           priority
         />
         <div className="absolute inset-x-0 -bottom-24 flex items-end justify-center pb-10 z-10">
-          <h2 className="text-9xl font-extrabold uppercase text-brand-dark">Play Video</h2>
+          <h2 className="font-body text-9xl font-extrabold uppercase text-brand-dark">Play Video</h2>
         </div>
       </div>
 
       {/* Why Choose Us Section */}
       <div className="flex flex-wrap max-w-screen-xl mx-auto px-6 md:flex md:items-start md:gap-10 my-32">
-        <div className='flex justify-between items-center gap-20 md:flex-row w-full mb-20'>
+        <div className='flex flex-col-reverse md:flex-row justify-between items-center gap-20 w-full mb-20'>
           <div className="md:w-1/2 w-full mb-10 md:mb-0">
             <Image src="/about-us-why-choose-us.jpg" alt="Why Choose Us" width={400} height={300} className="w-full h-[400px] object-cover" priority />
           </div>
@@ -133,7 +133,7 @@ export default function AboutUsPage() {
           </div>
         </div>
 
-        <div className="flex justify-between gap-20 items-center w-full md:mt-0">
+        <div className="flex flex-col md:flex-row justify-between gap-20 items-center w-full md:mt-0">
           <ul className="text-brand-white text-md list-disc pl-5 space-y-4">
             <li><strong>International Patient Focus</strong> – Bilingual speaking staff, tailored care, and discounted pricing.</li>
             <li><strong>Cutting-edge Technology</strong> – Digital dentistry, 3D imaging, and pain-free procedures.</li>
@@ -142,7 +142,7 @@ export default function AboutUsPage() {
             <li><strong>Creative, Stress-Free Clinic Design</strong> – A welcoming, modern space in the heart of Izmir.</li>
           </ul>
 
-            <div className="md:w-1/2 w-full mb-10 md:mb-0 justify-start flex flex-wrap">
+            <div className="md:w-1/2 w-full mb-10 md:mb-0 justify-center md:justify-start flex flex-wrap">
               <Image src="/Google-reviews.png" alt="Google Reviews" width={400} height={200} className="w-[400px] h-[200px] object-contain" priority />
               <Image src="/trustpilot-reviews-dark.png" alt="Trustpilot Reviews" width={400} height={200} className="w-[400px] h-[200px] object-contain" priority />
             </div>

@@ -20,7 +20,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
   services,
   viewAllLink,
 }) => (
-  <div className="max-w-screen-xl mx-auto px-6 text-center my-24">
+  <div className="max-w-screen-xl mx-auto px-6 text-center my-20">
     <p className="text-lg text-brand-primary mb-4">{subheading}</p>
     <h2 className="text-4xl font-heading text-brand-primary font-bold mb-10">{heading}</h2>
 

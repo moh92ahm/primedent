@@ -1,6 +1,6 @@
 'use client'
 
-import ReactCompareImage from 'react-compare-image'
+import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider'
 
 type BeforeAfterSliderProps = {
   before: string
@@ -10,11 +10,10 @@ type BeforeAfterSliderProps = {
 const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ before, after }) => {
   return (
     <div className="rounded overflow-hidden shadow-md">
-      <ReactCompareImage
-        leftImage={before}
-        rightImage={after}
-        sliderPositionPercentage={0.5}
-        handleSize={40}
+      <ReactCompareSlider
+        itemOne={<ReactCompareSliderImage src={before} alt="Before" />}
+        itemTwo={<ReactCompareSliderImage src={after} alt="After" />}
+        position={50}
       />
     </div>
   )
