@@ -10,6 +10,7 @@ export async function Header() {
       { link: { url: '/dr-serhat', label: 'Dr. Serhat', type: 'custom' } },
       { link: { url: '/services', label: 'Services', type: 'custom' } },
       { link: { url: '/contact-us', label: 'Contact Us', type: 'custom' } },
+      { link: { url: '/posts', label: 'Blog', type: 'custom' } },
     ],
   } as Header
 
