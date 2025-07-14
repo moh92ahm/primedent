@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa'
+import { FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
 
 import type { Footer as FooterType } from '@/payload-types'
 
@@ -39,7 +39,7 @@ export async function Footer() {
             </h2>
           </div>
           <Link
-            href="/contact"
+            href="/contact-us"
             className="bg-brand-dark text-white px-6 py-3 flex items-center gap-2 mt-4 md:mt-0 hover:bg-gray-800 transition"
           >
             Get Free Consultation <span>→</span>
@@ -50,16 +50,15 @@ export async function Footer() {
       <div className="py-12 px-6 md:px-20 relative z-10">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
           <div>
-            <div className="mb-4">
+            <div className="mb-4 md:basis-1/4 lg:basis-1/5 flex flex-col items-start">
               <Logo className="h-auto mb-2" />
             </div>
-            <p className="text-sm text-gray-300 mb-4">
-              We Are Committed To Delivering Exceptional Healthcare With Compassion, Expertise, And
-              Innovation. Our Dedicated...
+            <p className="text-sm text-brand-white mb-4">
+              we are committed to delivering exceptional healthcare with compassion, expertise, and innovation. Our dedicated.
             </p>
             <div className="flex space-x-3 mt-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/primedentada/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-brand-background rounded-full p-3 flex items-center justify-center hover:bg-brand-primary  transition"
@@ -67,7 +66,7 @@ export async function Footer() {
                 <FaInstagram size={18} className="text-white hover:text-brand-background" />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61577891274230"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-brand-background rounded-full p-3 flex items-center justify-center hover:bg-brand-primary  transition"
@@ -75,18 +74,19 @@ export async function Footer() {
                 <FaFacebookF size={18} className="text-white hover:text-brand-background" />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://linkedin.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-brand-background rounded-full p-3 flex items-center justify-center hover:bg-brand-primary  transition"
               >
-                <FaYoutube size={18} className="text-white hover:text-brand-background" />
+                <FaLinkedinIn size={18} className="text-white hover:text-brand-background" />
               </a>
             </div>
           </div>
 
+
           <div>
-            <h3 className="font-bold mb-3 font-heading">Our Pages</h3>
+            <h3 className="font-bold mb-3 font-heading text-lg">Our Pages</h3>
             <nav className="flex flex-col space-y-2 text-sm text-brand-white hover:text-brand-primary">
               {navItems.map(({ link }, i) => {
                 return <CMSLink className="text-white" key={i} {...link} />
@@ -95,7 +95,7 @@ export async function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold mb-3 font-heading">Services</h3>
+            <h3 className="font-bold mb-3 font-heading text-lg">Services</h3>
             <ul className="space-y-2 text-sm text-brand-white">
               {services.map((title, idx) => (
                 <li key={idx}>{title}</li>
@@ -104,22 +104,22 @@ export async function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold mb-3 font-heading ">Contact Us </h3>
+            <h3 className="font-bold mb-3 font-heading text-lg">Contact Us </h3>
             <ul className="space-y-2 text-sm text">
               <li>
                 <strong>Address</strong>
                 <br />
-                1901 Thornridge Cir. Shiloh
+                Selçuk Blv No:14, Kuşadası, Turkey
               </li>
               <li>
                 <strong>Phone Number</strong>
                 <br />
-                013 354 213 - 92132
+                0549 681 54 13
               </li>
               <li>
                 <strong>Email Address</strong>
                 <br />
-                info123@gmail.com
+                info@primedentada.com
               </li>
             </ul>
           </div>

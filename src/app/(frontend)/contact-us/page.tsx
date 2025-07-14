@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import React from 'react'
 
+import ContactFormWithMessage from '@/components/Forms/ContacFormWithMessage'
 
 export const metadata: Metadata = {
   title: 'Contact Us | Primedent',
@@ -24,42 +25,9 @@ export default function ContactUsPage() {
           <h2 className="mb-6 text-brand-primary text-4xl font-bold font-heading">
             Stay Connected <br /> for Better Health.
           </h2>
-          <form className="space-y-6">
-            <div className="flex flex-col md:flex-row gap-6">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full px-4 py-2 bg-transparent border border-brand-light text-white"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full px-4 py-2 bg-transparent border border-brand-light text-white"
-              />
-            </div>
-            <div className="flex flex-col md:flex-row gap-6">
-              <input
-                type="text"
-                placeholder="Phone Number"
-                className="w-full px-4 py-2 bg-transparent border border-brand-light text-white"
-              />
-              <input
-                type="text"
-                placeholder="Subject"
-                className="w-full px-4 py-2 bg-transparent border border-brand-light text-white"
-              />
-            </div>
-            <textarea
-              placeholder="Write a Message..."
-              className="w-full px-4 py-2 bg-transparent border border-brand-light text-white h-32"
-            ></textarea>
-            <button
-              type="submit"
-              className="bg-brand-primary font-heading text-xl text-brand-dark px-6 py-3"
-            >
-              Book An Appointment →
-            </button>
-          </form>
+          <div>
+          <ContactFormWithMessage />
+          </div>
         </div>
 
         {/* Contact Info */}
@@ -70,13 +38,13 @@ export default function ContactUsPage() {
           <p className="mb-4 font-xl">Email: info@primedent.com</p>
           <div className="border-t border-gray-300 opacity-40 my-6" />
           <h4 className="text-xl font-heading font-bold mb-2">Contact Us:</h4>
-          <p className="mb-8 font-xl">Phone: 031 354 213 - 92132</p>
+          <p className="mb-8 font-xl">Phone: 0549 681 54 13</p>
           <div className="border-t border-gray-300 opacity-40 my-6" />
           <h4 className="text-xl font-heading font-bold mb-2">Address:</h4>
-          <p className="mb-8 font-xl">Address: 1907 Thornridge Cir. Shiloh</p>
+          <p className="mb-8 font-xl">Address: Selçuk Blv No:14, Kuşadası, Turkey</p>
           <div className="border-t border-gray-300 opacity-40 my-6" />
           <h4 className="text-xl font-heading font-bold mb-2">Subject:</h4>
-          <p className="mb-8 font-xl">Service: Medical and Dental</p>
+          <p className="mb-8 font-xl">Service: Dental Treatments</p>
         </div>
       </div>
 
@@ -86,38 +54,37 @@ export default function ContactUsPage() {
         <div className="grid md:grid-cols-3 gap-10">
           {/* Replace the iframe src with your actual embedded map URLs */}
           <div className="bg-brand-primary text-brand-dark  p-4">
-            <iframe
-              src="https://maps.google.com/maps?q=New York&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              className="w-full h-52 mb-3"
-              loading="lazy"
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3148.9698149046526!2d27.2714134!3d37.8843886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14beafbb2a46def3%3A0xf03d244b40157ed1!2sPrime%20Dent%20Ada!5e0!3m2!1sen!2str!4v1752051950570!5m2!1sen!2str"
+            className="w-full h-52 mb-3"
+            loading="lazy"
             ></iframe>
-            <p className="font-heading text-2xl font-bold mt-4">Canada</p>
+            <p className="font-heading text-2xl font-bold mt-4">Kuşadası</p>
             <p className="text-md mt-2">
-              621 Heathway St, Suite 456 Cityville, Province AB 2323 Canada
+              Bayraklıdede, Selçuk Blv No:14, 09400 Kuşadası/Aydın, Türkiye
             </p>
             <p className="text-sm mt-2">Mon–Sat: 7:00 – 17:00</p>
           </div>
           <div className="bg-brand-primary text-brand-dark  p-4">
             <iframe
-              src="https://maps.google.com/maps?q=Chicago&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12501.20042681588!2d27.151004289953573!3d38.43453650162894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2str!4v1752058160021!5m2!1sen!2str"
               className="w-full h-52 mb-3"
               loading="lazy"
             ></iframe>
-            <p className="font-heading text-2xl font-bold mt-4">United States</p>
-            <p className="text-md mt-2">123 Heathway St, Suite 456 Cityville, CA 92831 USA</p>
-            <p className="text-sm mt-2">Mon–Sat: 7:00 – 17:00</p>
+            <p className="font-heading text-2xl font-bold mt-4">Izmir</p>
+            <p className="text-md mt-2">Coming Soon</p>
+            {/* <p className="text-sm mt-2">Mon–Sat: 7:00 – 17:00</p> */}
           </div>
           <div className="bg-brand-primary text-brand-dark  p-4">
             <iframe
-              src="https://maps.google.com/maps?q=Toronto&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d156388.24144806774!2d20.89661555955334!3d52.233097377592124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc669a869f01%3A0x72f0be2a88ead3fc!2sWarsaw%2C%20Poland!5e0!3m2!1sen!2str!4v1752058284921!5m2!1sen!2str"
               className="w-full h-52 mb-3"
               loading="lazy"
             ></iframe>
-            <p className="font-heading text-2xl font-bold mt-4">Canada</p>
+            <p className="font-heading text-2xl font-bold mt-4">Warsaw</p>
             <p className="text-md mt-2">
-              72 Heathway St, Suite 456 Cityville, Province AB 2323 Canada
+              Coming Soon
             </p>
-            <p className="text-sm mt-2">Mon–Sat: 7:00 – 17:00</p>
+            {/* <p className="text-sm mt-2">Mon–Sat: 7:00 – 17:00</p> */}
           </div>
         </div>
       </div>

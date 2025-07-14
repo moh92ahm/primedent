@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 
 import { cn } from '@/utilities/ui'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -38,8 +36,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html
       data-theme="dark"
       className={cn(
-        GeistSans.variable,
-        GeistMono.variable,
         cormorant.variable,
         montserrat.variable,
       )}
@@ -48,10 +44,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     >
       <head>
         <InitTheme />
-        <link href="/Favicon.png" rel="icon" sizes="32x32" />
-        <link href="/Favicon.png" rel="icon" type="image/svg+xml" />
+        <link href="/favicon.ico" rel="icon" sizes="32x32" />
+        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
-      <body>
+      <body className='bg-background text-foreground antialiased min-h-screen flex flex-col'>
         <Providers>
           <AdminBar
             adminBarProps={{
