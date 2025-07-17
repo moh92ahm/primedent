@@ -8,9 +8,8 @@ import type { Post, Service } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 
-export type CardPostData =
-  Pick<Post, 'slug' | 'categories' | 'meta' | 'title' | 'heroImage'>
-export type CardServiceData = Pick<Service, 'slug' | 'categories' | 'meta' | 'title'>
+export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title' | 'heroImage'>
+export type CardServiceData = Pick<Service, 'slug' | 'categories' | 'meta' | 'title' | 'heroImage'>
 
 type CardProps = {
   alignItems?: 'center'
@@ -37,7 +36,7 @@ export const Card: React.FC<CardProps> = (props) => {
   return (
     <article
       className={cn(
-        'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
+        'border border-border overflow-hidden bg-brand-dark hover:bg-brand-primary hover:text-brand-background hover:cursor-pointer p-4',
         className,
       )}
       ref={card.ref}
@@ -77,7 +76,7 @@ export const Card: React.FC<CardProps> = (props) => {
         )}
         {titleToUse && (
           <div className="prose">
-            <h3 className="font-bold">
+            <h3 className="font-bold font-heading text-3xl">
               <Link className="not-prose" href={href} ref={link.ref}>
                 {titleToUse}
               </Link>
