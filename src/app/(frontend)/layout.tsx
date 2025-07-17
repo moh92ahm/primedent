@@ -56,7 +56,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
 
           <Header />
-          {children}
+            <main className="flex-1 font-body text-foreground">
+              {children}
+            </main>
           <Footer />
         </Providers>
       </body>

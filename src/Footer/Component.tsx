@@ -1,32 +1,27 @@
+import { getCachedGlobal } from '@/utilities/getGlobals'
 import React from 'react'
 
 import { FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa'
 
-import type { Footer as FooterType } from '@/payload-types'
+import type { Footer } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import Link from 'next/link'
 import { Logo } from '@/components/Logo/Logo'
 
 export async function Footer() {
-  const footerData: FooterType = {
-    navItems: [
-      { link: { url: '/', label: 'Home', type: 'custom' } },
-      { link: { url: '/about-us', label: 'About Us', type: 'custom' } },
-      { link: { url: '/dr-serhat', label: 'Dr. Serhat', type: 'custom' } },
-      { link: { url: '/services', label: 'Services', type: 'custom' } },
-      { link: { url: '/contact-us', label: 'Contact Us', type: 'custom' } },
-    ],
-  } as FooterType
+
+  const footerData: Footer = await getCachedGlobal('footer', 1)()
+
+  const navItems = footerData?.navItems || []
 
   const services = [
     'Hollywood Smile',
     'All-on-4/6',
     'Dental Implant',
     'Zirconium Crown',
+    'Root Canal Treatment',
   ]
-
-  const navItems = footerData?.navItems || []
 
   return (
     <footer className="relative overflow-hidden font-body text-white bg-gradient-to-t from-brand-dark to-transparent">
@@ -54,7 +49,7 @@ export async function Footer() {
               <Logo className="h-auto mb-2" />
             </div>
             <p className="text-sm text-brand-white mb-4">
-              we are committed to delivering exceptional healthcare with compassion, expertise, and innovation. Our dedicated.
+              we are committed to delivering exceptional healthcare with compassion, expertise, and innovation.
             </p>
             <div className="flex space-x-3 mt-4">
               <a
