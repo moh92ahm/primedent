@@ -92,10 +92,20 @@ const config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
+        brand: {
+          dark: '#0b0d0c',
+          background: '#201f40',
+          accent: '#a4906c',
+          primary: '#f2e0ae',
+          light: '#feffde',
+          white: '#faf7f0',
+        },
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
         sans: ['var(--font-geist-sans)'],
+        heading: ['Cormorant Garamond', 'serif'],
+        body: ['Montserrat', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
@@ -113,8 +123,11 @@ const config = {
             {
               '--tw-prose-body': 'var(--text)',
               '--tw-prose-headings': 'var(--text)',
+              'h1, h2, h3, h4, h5, h6': {
+                fontFamily: theme('fontFamily.heading').join(', '),
+              },
               h1: {
-                fontWeight: 'normal',
+                fontWeight: 'bold',
                 marginBottom: '0.25em',
               },
             },
@@ -125,10 +138,11 @@ const config = {
             {
               h1: {
                 fontSize: '2.5rem',
+                fontWeight: 700,
               },
               h2: {
                 fontSize: '1.25rem',
-                fontWeight: 600,
+                fontWeight: 700,
               },
             },
           ],
@@ -138,9 +152,19 @@ const config = {
             {
               h1: {
                 fontSize: '3.5rem',
+                fontWeight: 700,
               },
               h2: {
                 fontSize: '1.5rem',
+                fontWeight: 700,
+              },
+              h3: {
+                fontSize: '1.5rem',
+                fontWeight: 700,
+              },
+              h4: {
+                fontSize: '1.25rem',
+                fontWeight: 700,
               },
             },
           ],
