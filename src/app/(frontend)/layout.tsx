@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 
 import { cn } from '@/utilities/ui'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
@@ -13,20 +11,44 @@ import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
+import { Cormorant_Garamond } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
+
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-cormorant',
+  display: 'swap',
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+})
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
+    <html 
+      data-theme="dark"
+      className={cn(
+        cormorant.variable,
+        montserrat.variable, 
+      )} 
+      lang="en" 
+      suppressHydrationWarning
+    >
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
-      <body>
+      <body className='bg-background text-foreground antialiased min-h-screen flex flex-col'>
         <Providers>
           <AdminBar
             adminBarProps={{
@@ -35,7 +57,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
 
           <Header />
-          {children}
+            <main className="flex-1 font-body text-foreground">
+              {children}
+            </main>
           <Footer />
         </Providers>
       </body>

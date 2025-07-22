@@ -103,7 +103,7 @@ const config = {
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
+        sans: ['Montserrat', 'var(--font-geist-sans)', 'sans-serif'],
         heading: ['Cormorant Garamond', 'serif'],
         body: ['Montserrat', 'sans-serif'],
       },
@@ -117,7 +117,7 @@ const config = {
           to: { height: '0' },
         },
       },
-      typography: () => ({
+      typography: (theme) => ({
         DEFAULT: {
           css: [
             {
