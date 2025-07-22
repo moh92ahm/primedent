@@ -38,7 +38,7 @@ export const PostHero: React.FC<{
 
           {/* Title */}
           <div>
-            <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl font-heading font-bold break-all">{title}</h1>
+            <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl font-heading font-bold">{title}</h1>
           </div>
 
           {/* Meta Info */}
