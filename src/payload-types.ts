@@ -180,10 +180,6 @@ export interface Page {
               | ({
                   relationTo: 'posts';
                   value: number | Post;
-                } | null)
-              |  ({
-                  relationTo: 'services';
-                  value: number | Service;
                 } | null);
             url?: string | null;
             label: string;
@@ -237,53 +233,6 @@ export interface Post {
     [k: string]: unknown;
   };
   relatedPosts?: (number | Post)[] | null;
-  categories?: (number | Category)[] | null;
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (number | null) | Media;
-    description?: string | null;
-  };
-  publishedAt?: string | null;
-  authors?: (number | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "services".
- */
-export interface Service {
-  id: number;
-  title: string;
-  heroImage?: (number | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  relatedServices?: (number | Service)[] | null;
   categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
@@ -478,10 +427,6 @@ export interface CallToActionBlock {
             | ({
                 relationTo: 'posts';
                 value: number | Post;
-              } | null)
-            | ({
-                relationTo: 'services';
-                value: number | Service;
               } | null);
           url?: string | null;
           label: string;
@@ -532,10 +477,6 @@ export interface ContentBlock {
             | ({
                 relationTo: 'posts';
                 value: number | Post;
-              } | null)
-            | ({
-                relationTo: 'services';
-                value: number | Service;
               } | null);
           url?: string | null;
           label: string;
@@ -589,11 +530,6 @@ export interface ArchiveBlock {
     | {
         relationTo: 'posts';
         value: number | Post;
-      }[]
-    | null
-    | {
-        relationTo: 'services';
-        value: number | Service;
       }[]
     | null;
   id?: string | null;
@@ -802,6 +738,53 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  title: string;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  relatedServices?: (number | Service)[] | null;
+  categories?: (number | Category)[] | null;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  authors?: (number | User)[] | null;
+  populatedAuthors?:
+    | {
+        id?: string | null;
+        name?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -857,10 +840,15 @@ export interface Search {
   id: number;
   title?: string | null;
   priority?: number | null;
-  doc: {
-    relationTo: 'posts' | 'services' ;
-    value: number | Post | Service;
-  };
+  doc:
+    | {
+        relationTo: 'posts';
+        value: number | Post;
+      }
+    | {
+        relationTo: 'services';
+        value: number | Service;
+      };
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -1231,7 +1219,7 @@ export interface PostsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "service_select".
+ * via the `definition` "services_select".
  */
 export interface ServicesSelect<T extends boolean = true> {
   title?: T;
@@ -1670,10 +1658,6 @@ export interface Header {
             | ({
                 relationTo: 'posts';
                 value: number | Post;
-              } | null)
-            | ({
-                relationTo: 'services';
-                value: number | Service;
               } | null);
           url?: string | null;
           label: string;
@@ -1703,10 +1687,6 @@ export interface Footer {
             | ({
                 relationTo: 'posts';
                 value: number | Post;
-              } | null)
-            | ({
-                relationTo: 'services';
-                value: number | Service;
               } | null);
           url?: string | null;
           label: string;
