@@ -64,7 +64,7 @@ export default async function Service({ params: paramsPromise }: Args) {
         <div className="container">
           <RichText className="max-w-[48rem] mx-auto" data={service.content} enableGutter={false} />
 
-          <h1 className='text-3xl font-heading font-bold mt-12 max-w-[48rem] mx-auto'>Related Posts:</h1>
+          <h1 className='text-3xl font-heading font-bold mt-12 max-w-[48rem] mx-auto'>Related Services:</h1>
           {service.relatedServices && service.relatedServices.length > 0 && (
             <RelatedServices
               className="mt-4 max-w-[48rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-2 grid-rows-[2fr]"

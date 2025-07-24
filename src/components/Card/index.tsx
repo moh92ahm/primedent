@@ -15,8 +15,8 @@ export type CardServiceData = Pick<Service, 'slug' | 'categories' | 'meta' | 'ti
 export const Card: React.FC<{
   alignItems?: 'center'
   className?: string
-  doc?: CardPostData | CardServiceData
-  relationTo?: 'posts' | 'services'
+  doc: CardPostData | CardServiceData
+  relationTo: 'posts' | 'services'
   showCategories?: boolean
   title?: string
 }> = (props) => {
