@@ -94,6 +94,18 @@ const queryServiceBySlug = cache(async ({ slug }: { slug: string }) => {
     draft,
     limit: 1,
     overrideAccess: draft,
+    depth: 1,
+    select: {
+      title: true,
+      slug: true,
+      categories: true,
+      meta: true,
+      heroImage: true,
+      content: true,
+      relatedServices: true,
+      populatedAuthors: true,
+      publishedAt: true,
+    },
     pagination: false,
     where: {
       slug: {
